@@ -53,6 +53,12 @@ function App() {
     setUpdate(false);
   };
 
+  const _handleKeyDown= function(e) {
+    if (e.key === 'Enter') {
+      console.log('do validate');
+      addItem()
+    }
+  }
   const addItem = function () {
     // Sending data to firebase
 
@@ -87,6 +93,7 @@ function App() {
           className="input"
           placeholder="Enter items here..."
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e)=>_handleKeyDown(e)}
         />
 
         {update ? (
@@ -95,6 +102,7 @@ function App() {
             color="primary"
             className="button"
             onClick={addItem}
+            
           >
             <MdAddCircle size={20} />
           </Button>
